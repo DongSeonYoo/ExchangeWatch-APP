@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "7070941003",
+    "project_id": "rnstarterkitcli",
+    "storage_bucket": "rnstarterkitcli.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:7070941003:android:9fd982687df67bb39332ce",
+        "android_client_info": {
+          "package_name": "com.rnstarterkitcli"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "7070941003-drbcrc8c4ubk158o5tok7ie8v6m4bvvg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rnstarterkitcli",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "7070941003-p710lf709tf64q3qj97d8bl0d8cikqpl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAU-I7v1L1nkjKvtDdabeTh3IYY-QMVysM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "7070941003-p710lf709tf64q3qj97d8bl0d8cikqpl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "7070941003-d7rkh8oqq62n4ft4tkt4ub2fm8k288c5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.uguraktas.RNStarterKitExpo"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:7070941003:android:a94c7fa053bbb8129332ce",
+        "android_client_info": {
+          "package_name": "com.uguraktas.RNStarterKitExpo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "7070941003-p710lf709tf64q3qj97d8bl0d8cikqpl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAU-I7v1L1nkjKvtDdabeTh3IYY-QMVysM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "7070941003-p710lf709tf64q3qj97d8bl0d8cikqpl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "7070941003-d7rkh8oqq62n4ft4tkt4ub2fm8k288c5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.uguraktas.RNStarterKitExpo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
