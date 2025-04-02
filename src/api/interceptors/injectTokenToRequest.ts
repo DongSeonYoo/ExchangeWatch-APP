@@ -5,7 +5,7 @@ export const InjectTokenToRequest = async (
   config: InternalAxiosRequestConfig
 ): Promise<InternalAxiosRequestConfig> => {
   try {
-    const accessToken = await TokenService.getAccessToken();
+    const accessToken = TokenService.getAccessToken();
     if (accessToken) {
       config.headers.Authorization = `Bearer ${accessToken}`;
     }
