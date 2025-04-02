@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { StorageService } from "../services/StorageService";
-
-const ONBOARDING_KEY = "has_seen_onboarding1";
+import STORAGE_KEYS from "../constant/storageKeys";
 
 export const useOnboarding = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -13,7 +12,7 @@ export const useOnboarding = () => {
 
   const checkOnboardingStatus = async () => {
     try {
-      const status = await StorageService.getItem(ONBOARDING_KEY);
+      const status = await StorageService.getItem(STORAGE_KEYS.ONBOARDING_KEY);
       setHasSeenOnboarding(!!status);
     } catch (error) {
       console.error("Error checking onboarding status:", error);

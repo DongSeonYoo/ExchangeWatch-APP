@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import i18n from "../src/helpers/i18n";
+import i18n from "../src/utils/i18n";
 
 export const createAuthSchemas = () => ({
   loginSchema: yup.object({
