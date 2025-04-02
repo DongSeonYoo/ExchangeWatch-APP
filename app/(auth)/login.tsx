@@ -9,20 +9,20 @@ import {
 import { Link, useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { colorScheme } from "nativewind";
-import i18n from "../../src/helpers/i18n";
+import i18n from "../../src/utils/i18n";
 import { useAuth } from "../../src/hooks/useAuth";
 
 export default function Login() {
   const isDark = colorScheme.get() === "dark";
-  const { googleLoginWithRedirect } = useAuth();
+  const { googleLoginWithRedirect, isAuthenticated } = useAuth();
   const router = useRouter();
 
   // 구글 로그인 버튼 클릭 시 서버의 딥링크 리다이렉트 API 호출 TODO
   const handleGoogleLogin = async () => {
-    // authQueries.handleGoogleLoginRedirect();
     const success = await googleLoginWithRedirect();
     if (success) {
-      router.replace("/(app)/home");
+      console.log("isAuth: ", isAuthenticated);
+      return router.replace("/(app)/home");
     }
   };
 
@@ -39,7 +39,7 @@ export default function Login() {
         </Text>
         <TouchableOpacity
           className="w-full py-3 px-6 rounded-full items-center justify-center my-2 flex-row border border-gray-200 dark:border-white"
-          onPress={handleGoogleLogin}
+          onPress={() => handleGoogleLogin()}
         >
           <Ionicons
             name="logo-google"

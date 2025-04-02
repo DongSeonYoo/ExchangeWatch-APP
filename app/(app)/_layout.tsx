@@ -1,15 +1,14 @@
 import { Stack, Redirect } from "expo-router";
-import { useAppContext } from "@/src/context/AppContext";
 import LoadingScreen from "@/src/components/common/LoadingScreen";
 import { Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
 import { router } from "expo-router";
 import { useColorScheme } from "nativewind";
-import i18n from "../../src/helpers/i18n";
-import { useUserContext } from "../../src/context/UserContext";
+import i18n from "../../src/utils/i18n";
+import { useAuth } from "../../src/hooks/useAuth";
 
 export default function AppLayout() {
-  const { isAuthenticated, isLoading } = useUserContext();
+  const { isAuthenticated, isLoading } = useAuth();
   const { colorScheme } = useColorScheme();
   const isDark = colorScheme === "dark";
 

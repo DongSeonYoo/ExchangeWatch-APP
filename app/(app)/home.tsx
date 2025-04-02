@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, SafeAreaView, ScrollView } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 import { QuickActions } from "@/src/components/home/QuickActions";
-import { FeaturedContent } from "@/src/components/home/FeaturedContent";
 import { UserInfo } from "@/src/components/home/UserInfo";
-import i18n from "../../src/helpers/i18n";
+import i18n from "../../src/utils/i18n";
 import { useUserContext } from "../../src/context/UserContext";
+import { FeaturedContent } from "../../src/components/home/FeaturedContent";
+import { useAuth } from "../../src/hooks/useAuth";
 
 export default function Home() {
-  // TODO
-  const { user } = useUserContext();
+  const { user, fetchUserProfile } = useUserContext();
+  const { isAuthenticated } = useAuth();
 
   // Add focus effect to refresh the screen when it comes into focus
   useFocusEffect(
@@ -31,7 +32,7 @@ export default function Home() {
           <Text className="text-lg font-medium text-gray-600 mb-6 dark:text-white">
             {i18n.t("homeScreen.subtitle")}
           </Text>
-          {/* <FeaturedContent /> */}
+          <FeaturedContent />
           <Text className="text-xl font-semibold text-gray-800 mb-4 dark:text-white">
             {i18n.t("homeScreen.quickActions")}
           </Text>

@@ -3,7 +3,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
 import { router } from "expo-router";
 import { useColorScheme } from "nativewind";
-import i18n from "../../src/helpers/i18n";
+import i18n from "../../src/utils/i18n";
 
 export default function AuthLayout() {
   const { colorScheme } = useColorScheme();
