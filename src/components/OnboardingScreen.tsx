@@ -5,15 +5,14 @@ import { Image, useWindowDimensions, View } from "react-native";
 import { router } from "expo-router";
 import { StorageService } from "../services/StorageService";
 import i18n from "../utils/i18n";
-
-const ONBOARDING_KEY = "has_seen_onboarding";
+import STORAGE_KEYS from "../constant/storageKeys";
 
 const OnboardingScreen = () => {
   const { width } = useWindowDimensions();
   const imageSize = width * 0.5;
 
   const handleDone = async () => {
-    await StorageService.setItem(ONBOARDING_KEY, "true");
+    await StorageService.setItem(STORAGE_KEYS.ONBOARDING_KEY, "true");
     router.replace("/(auth)/login");
   };
 

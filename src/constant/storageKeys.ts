@@ -7,6 +7,8 @@ const STORAGE_KEYS = {
   USER_INFO_KEY: "USER_INFO",
   ACCESS_TOKEN_KEY: "ACCESS_TOKEN",
   REFRESH_TOKEN_KEY: "REFRESH_TOKEN",
+
+  ONBOARDING_KEY: "has_seen_onboarding",
 } as const;
 
 export default STORAGE_KEYS;
