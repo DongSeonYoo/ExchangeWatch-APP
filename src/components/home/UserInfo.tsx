@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text } from "react-native";
 import moment from "moment";
-import i18n from "../../helpers/i18n";
+import i18n from "../../utils/i18n";
 
 export const UserInfo = () => {
   return (

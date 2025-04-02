@@ -4,7 +4,7 @@ import Onboarding from "react-native-onboarding-swiper";
 import { Image, useWindowDimensions, View } from "react-native";
 import { router } from "expo-router";
 import { StorageService } from "../services/StorageService";
-import i18n from "../helpers/i18n";
+import i18n from "../utils/i18n";
 
 const ONBOARDING_KEY = "has_seen_onboarding";
 

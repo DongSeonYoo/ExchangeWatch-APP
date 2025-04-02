@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { colorScheme } from "nativewind";
-import i18n from "../../helpers/i18n";
+import i18n from "../../utils/i18n";
 
 type QuickActionButton = {
   icon: "person-outline" | "chatbubble-ellipses-outline";
