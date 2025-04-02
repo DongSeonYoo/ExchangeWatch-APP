@@ -9,7 +9,7 @@ import React, {
 import { useOnboarding } from "@/src/hooks/useOnboarding";
 import { getLocales } from "expo-localization";
 import { colorScheme } from "nativewind";
-import { changeLanguage } from "../helpers/i18n";
+import { changeLanguage } from "../utils/i18n";
 import { StorageService } from "../services/StorageService";
 import STORAGE_KEYS from "../constant/storageKeys";
 import * as Linking from "expo-linking";
@@ -26,6 +26,13 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 
 type ColorScheme = AppContextType["colorScheme"];
 
+/**
+ * 앱의 전반적인 설정을 관리하는 컨텍스트
+ *
+ * 언어 설정
+ * 테마/색상 설정
+ * 온보딩 상태 등
+ */
 export const AppProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
