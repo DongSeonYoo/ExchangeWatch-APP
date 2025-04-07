@@ -17,6 +17,7 @@ export default function AppLayout() {
   }
 
   if (!isAuthenticated) {
+    console.log("로그인안댐");
     return <Redirect href="/(auth)/login" />;
   }
 
