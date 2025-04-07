@@ -18,7 +18,7 @@ export const UserApi = {
 
   updateUserInfo: async (userIdx: number, data: any) => {
     try {
-      const response = await api.put(`/users/${userIdx}`, data);
+      const response = await api.put<any>(`/users/${userIdx}`, data);
       return response.data;
     } catch (error) {
       console.error("Error updating user info", error);

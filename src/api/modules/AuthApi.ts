@@ -28,8 +28,10 @@ export const AuthAPI = {
     }
   },
 
-  refreshAccessToken: async () => {
-    return await api.get<{ refreshToken: string }>("/auth/refresh");
+  refreshAccessToken: async (refreshToken: string) => {
+    return api.post<{ accessToken: string }>("/auth/refresh", {
+      refreshToken,
+    });
   },
 
   // ...api 요청 후 응답 반환
