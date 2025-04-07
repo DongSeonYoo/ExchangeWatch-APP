@@ -4,11 +4,11 @@ const storage = new MMKV();
 
 export const StorageService = {
   setItem: (key: string, value: any) => {
-    storage.set(key, JSON.stringify(value));
+    storage.set(key, value);
   },
   getItem: (key: string) => {
     const value = storage.getString(key);
-    return value ? JSON.parse(value) : null;
+    return value ? value : null;
   },
   removeItem: (key: string) => {
     storage.delete(key);
