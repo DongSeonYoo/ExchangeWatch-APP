@@ -39,7 +39,9 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({
 
   // UserContext는 단순히 유저 정보만을 로드해서 유저 상태 스토리지에 저장 & userState업데이트
   useEffect(() => {
-    fetchUserProfile();
+    if (isAuthenticated && accessToken) {
+      fetchUserProfile();
+    }
     const loadUserInfo = () => {
       try {
         const userJsonData = StorageService.getItem(STORAGE_KEYS.USER_INFO_KEY);
@@ -57,7 +59,7 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({
     };
 
     loadUserInfo();
-  }, []);
+  }, [isAuthenticated, accessToken]);
 
   // 사용자 정보 설정 (스토리지에 따로 저장)
   const setUserInfo = (userInfo: UserInfoType | null) => {
@@ -81,8 +83,8 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({
 
     setIsLoading(true);
     try {
-      const response = await UserApi.getUserInformation();
-      setUserInfo(response.data);
+      const data = await UserApi.getUserInformation();
+      setUserInfo(data);
       setError(null);
     } catch (error) {
       console.error("Error fetching user information: ", error);
