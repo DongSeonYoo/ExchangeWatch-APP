@@ -26,11 +26,6 @@ export interface ExchangeRateState {
   isLoading: boolean;
   error: string | null;
   lastUpdated: Date | null;
-  currentPage: number;
-  totalPages: number;
-  setPage: (page: number) => void;
-  pageSize: number;
-  setPageSize: (size: number) => void;
   refreshRates: () => Promise<void>;
   ratesData: CurrentRatesResponseDto | null;
 
@@ -55,9 +50,6 @@ export const useExchangeRate = (
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [totalPages, setTotalPages] = useState<number>(1);
-  const [pageSize, setPageSize] = useState<number>(10);
 
   const [activeTab, setActiveTab] = useState<"all" | "favorites">("all");
   const [searchQuery, setSearchQuery] = useState("");
@@ -106,18 +98,12 @@ export const useExchangeRate = (
 
     setIsLoading(true);
     try {
-      const data = await ExchangeRateAPI.getCurrentRates(
-        baseCurrency,
-        currentPage,
-        pageSize
-      );
+      const data = await ExchangeRateAPI.getCurrentRates(baseCurrency);
       setRatesData(data);
       setRates(transformRatesData(data.rates));
       setLastUpdated(new Date());
       setError(null);
       const totalItems = Object.keys(data.rates).length;
-      const calculatedTotalPages = Math.ceil(totalItems / pageSize);
-      setTotalPages(calculatedTotalPages > 0 ? calculatedTotalPages : 1);
     } catch (error) {
       console.error("환율 데이터 불러오기 오류:", error);
       setError("환율 데이터를 불러오는데 오류가 발생했습니다");
@@ -130,12 +116,11 @@ export const useExchangeRate = (
     if (isAuthenticated) {
       fetchRates();
     }
-  }, [isAuthenticated, baseCurrency, currentPage, pageSize]);
+  }, [isAuthenticated, baseCurrency]);
 
   const handleBaseCurrencyChange = (newCurrency: string) => {
     StorageService.setItem(STORAGE_KEYS.BASE_CURRENCY, newCurrency);
     setBaseCurrency(newCurrency);
-    setCurrentPage(1);
   };
 
   return {
@@ -145,11 +130,6 @@ export const useExchangeRate = (
     isLoading,
     error,
     lastUpdated,
-    currentPage,
-    totalPages,
-    setPage: setCurrentPage,
-    pageSize,
-    setPageSize,
     refreshRates: fetchRates,
     ratesData,
 
