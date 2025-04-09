@@ -1,5 +1,5 @@
 // hooks/useExchangeRate.ts
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ExchangeRateAPI } from "../api/modules/ExchangeRateApi";
 import {
   RateDetailDto,
@@ -112,10 +112,12 @@ export const useExchangeRate = (
     }
   };
 
+  const hasFetched = useRef(false);
   useEffect(() => {
-    if (isAuthenticated) {
-      fetchRates();
-    }
+    if (!isAuthenticated || hasFetched.current) return;
+    hasFetched.current = true;
+
+    fetchRates();
   }, [isAuthenticated, baseCurrency]);
 
   const handleBaseCurrencyChange = (newCurrency: string) => {

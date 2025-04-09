@@ -12,8 +12,6 @@ export const ExchangeRateAPI = {
       `/exchange-rates/current`,
       {
         baseCurrency,
-        page,
-        limit,
       }
     );
 
