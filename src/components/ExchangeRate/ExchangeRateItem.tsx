@@ -38,7 +38,7 @@ const ExchangeRateItem: React.FC<Props> = ({ baseCurrency, rate }) => {
       {/* 현재가 */}
       <View className="flex-[2] items-end justify-center">
         <Text className="text-white text-base font-semibold">
-          {rate.rate.toFixed(2)}
+          {rate.inverseRate.toFixed(2)}
         </Text>
       </View>
 

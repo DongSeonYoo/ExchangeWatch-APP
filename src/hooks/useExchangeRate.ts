@@ -17,6 +17,8 @@ export interface RateDisplay {
   rate: number;
   dayChange: number;
   dayChangePercent: number;
+  inverseRate: number;
+  timestamp: Date;
 }
 
 export interface ExchangeRateState {
@@ -84,9 +86,9 @@ export const useExchangeRate = (
     }
   }, []);
 
-  const transformRatesData = (rates: {
-    [currencyCode: string]: RateDetailDto;
-  }): RateDisplay[] => {
+  const transformRatesData = (
+    rates: CurrentRatesResponseDto["rates"]
+  ): RateDisplay[] => {
     return Object.entries(rates).map(([currencyCode, details]) => ({
       currencyCode,
       ...details,

@@ -3,6 +3,8 @@ export interface RateDetailDto {
   rate: number; // 환율
   dayChange: number; // 일간 변동액
   dayChangePercent: number; // 일간 변동률(%)
+  inverseRate: number; // 변환된(반전) 환율
+  timestamp: Date;
 }
 
 export interface CurrentRatesResponseDto {
