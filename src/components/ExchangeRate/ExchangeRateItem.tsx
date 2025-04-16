@@ -19,8 +19,12 @@ const ExchangeRateItem: React.FC<Props> = ({ baseCurrency, rate }) => {
 
   const formattedChange =
     rate.dayChangePercent > 0
-      ? `+${rate.dayChangePercent.toFixed(2)}%`
-      : `${rate.dayChangePercent.toFixed(2)}%`;
+      ? `+${rate.dayChangePercent?.toFixed(2)}%`
+      : `${rate.dayChangePercent?.toFixed(2)}%`;
+  const timestamp = new Date(rate.timestamp);
+  const hour = timestamp.getHours();
+  const min = timestamp.getMinutes();
+  const sec = timestamp.getSeconds();
 
   return (
     <TouchableOpacity className="flex-row px-4 py-4 border-b border-gray-800">
@@ -38,7 +42,7 @@ const ExchangeRateItem: React.FC<Props> = ({ baseCurrency, rate }) => {
       {/* 현재가 */}
       <View className="flex-[2] items-end justify-center">
         <Text className="text-white text-base font-semibold">
-          {rate.inverseRate.toFixed(2)}
+          {rate.inverseRate?.toFixed(2)}
         </Text>
       </View>
 
@@ -51,7 +55,7 @@ const ExchangeRateItem: React.FC<Props> = ({ baseCurrency, rate }) => {
 
       {/* 시간 */}
       <View className="flex-[2] items-end justify-center">
-        <Text className="text-gray-400 text-xs">{"24:20:11"}</Text>
+        <Text className="text-gray-400 text-xs">{`${hour}:${min}:${sec}`}</Text>
       </View>
     </TouchableOpacity>
   );
