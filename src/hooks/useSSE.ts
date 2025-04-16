@@ -38,6 +38,7 @@ export const useSSE = (baseCurrency: string, options: UseSSEOptions = {}) => {
 
       // 연결 성공 이벤트
       eventSourceRef.current.addEventListener("open", () => {
+        console.log("@@sse 연결 오픈@@");
         setReadyState(ReadyState.OPEN);
         setError(null);
         options.onOpen?.();
