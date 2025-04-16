@@ -63,10 +63,13 @@ export const useExchangeRate = (
         return prevRates.map((rate) => {
           if (rate.currencyCode === data.currencyCode) {
             return {
-              ...rate,
-              rate: data.rate,
-              dayChange: data.change,
-              dayChangePercent: data.changePct,
+              name: rate.name,
+              currencyCode: data.currencyCode,
+              inverseRate: rate.inverseRate + data.rate,
+              rate: rate.rate + data.rate,
+              dayChange: rate.dayChange + data.change,
+              dayChangePercent: rate.dayChangePercent + data.changePct,
+              timestamp: new Date(data.timestamp),
             };
           }
           return rate;
@@ -84,7 +87,9 @@ export const useExchangeRate = (
     if (savedCurrency) {
       setBaseCurrency(savedCurrency);
     }
-  }, []);
+
+    fetchRates();
+  }, [baseCurrency]);
 
   const transformRatesData = (
     rates: CurrentRatesResponseDto["rates"]
@@ -101,6 +106,7 @@ export const useExchangeRate = (
     setIsLoading(true);
     try {
       const data = await ExchangeRateAPI.getCurrentRates(baseCurrency);
+
       setRatesData(data);
       setRates(transformRatesData(data.rates));
       setLastUpdated(new Date());
@@ -116,11 +122,11 @@ export const useExchangeRate = (
 
   const hasFetched = useRef(false);
   useEffect(() => {
-    if (!isAuthenticated || hasFetched.current) return;
+    if (hasFetched.current) return;
     hasFetched.current = true;
 
     fetchRates();
-  }, [isAuthenticated, baseCurrency]);
+  }, [baseCurrency]);
 
   const handleBaseCurrencyChange = (newCurrency: string) => {
     StorageService.setItem(STORAGE_KEYS.BASE_CURRENCY, newCurrency);
