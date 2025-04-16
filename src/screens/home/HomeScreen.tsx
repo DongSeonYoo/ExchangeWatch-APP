@@ -53,7 +53,7 @@ export default function HomeScreen() {
               rates={filteredRates}
               onRefresh={onRefresh}
               searchQuery={searchQuery}
-              baseCurrency={"KRW"}
+              baseCurrency={baseCurrency}
               isLoading={isLoading}
             />
           </View>
